@@ -32,7 +32,7 @@ Conectarlo a Netlify (una sola vez):
 1. Entrar a https://app.netlify.com y crear una cuenta gratis con GitHub.
 2. "Add new site" > "Import an existing project" > GitHub > elegir `fanfest-links`.
 3. Dejar vacíos el comando de build y el directorio de publicación (el `netlify.toml` ya los define) y tocar "Deploy".
-4. En "Site configuration" > "Change site name", poner por ejemplo `fanfestx`, para que la dirección quede `fanfestx.netlify.app`.
+4. Nombre del sitio: `fanfest-info`, dirección https://fanfest-info.netlify.app
 5. Poner ese link en la bio de @fanfestx.
 
 Después de eso, cada cambio que se sube al repo queda publicado en uno o dos minutos. Un dominio propio (ej. fanfest.com.ar) es opcional y se paga aparte.
@@ -44,6 +44,6 @@ La página ya tiene cada botón etiquetado (`Entradas online`, `Inscripción Soc
 1. Crear cuenta en https://cloud.umami.is (plan Hobby gratis).
 2. "Add website" con el dominio de Netlify y copiar el **Website ID**.
 3. En `index.html`, en el bloque ESTADÍSTICAS del `<head>`, pegar el ID y sacar `<!--` y `-->` alrededor de la línea `<script ...>`.
-4. Volver a subir la carpeta. En Umami se ven visitas, de dónde vienen (Instagram, WhatsApp), dispositivos y clics por botón en "Events".
+4. Subir el cambio al repo (Netlify lo publica solo). En Umami se ven visitas, de dónde vienen (Instagram, WhatsApp), dispositivos y clics por botón en "Events".
 
 Tip: para medir cada pieza, usar el link con etiqueta, ej. `fanfestx.netlify.app/?utm_source=rrpp&utm_campaign=earlybird`. Umami lo muestra en "UTM".
