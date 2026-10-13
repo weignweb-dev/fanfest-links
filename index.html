@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fan Fest 2026</title>
+<meta name="description" content="Fan Fest 2026 · 5 y 6 de diciembre · Círculo Italiano, Colón. Entradas, inscripciones y ubicación.">
+<!-- Vista previa al compartir el link en WhatsApp / Instagram -->
+<meta property="og:title" content="Fan Fest 2026 · 5 y 6 de diciembre">
+<meta property="og:description" content="2 días · 1 evento · 1 entrada. Música, deportes, pileta, amigos y fiesta. El verano empieza acá.">
+<meta property="og:image" content="img/portada.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="img/perfil.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800;125,900&family=Barlow+Condensed:wght@700;800&family=Figtree:wght@400;500;600;700&display=swap">
+
+<!-- ESTADÍSTICAS (Umami, gratis). Cuando tengas la cuenta, pegá tu Website ID
+     en data-website-id y borrá los guiones de comentario de esta línea.
+<script defer src="https://cloud.umami.is/script.js" data-website-id="PEGAR-AQUI-WEBSITE-ID"></script>
+-->
+
+<style>
+/* Concepto: la identidad limpia de los flyers. Fondo blanco, azul profundo del logo,
+   el degradé coral-rosa de las palmeras como único acento fuerte, portada del drone
+   teñida de rosa con el borde de ondas del flyer Early Bird, y el amarillo de la fecha. */
+:root {
+  --blanco: #ffffff;
+  --azul: #15123f;          /* azul profundo del logo */
+  --azul-suave: #55527a;    /* texto secundario */
+  --coral: #ff6555;         /* degradé de las palmeras, arriba */
+  --rosa: #ff3d98;          /* degradé de las palmeras, abajo */
+  --coral-fuerte: #e2405a; /* versión más intensa para texto blanco encima (contraste AA) */
+  --rosa-fuerte: #d42c7a;  /* también para texto rosa sobre blanco */
+  --amarillo: #fbb917;      /* chip de fecha de los flyers */
+  --gris: #f4f3f8;          /* fondo de botones */
+  --linea: #e4e2ee;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --ancha: "Archivo", "Arial Black", sans-serif;
+  --texto: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--blanco); }
+body {
+  margin: 0; min-height: 100vh; color: var(--azul); background: var(--blanco);
+  font-family: var(--texto); font-size: 16px; line-height: 1.45;
+  padding-block: 0; padding-inline: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.fondo { display: none; }
+
+main { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+
+/* Portada: video del drone teñido de rosa, como el flyer Early Bird */
+/* ocupa todo el ancho de la pantalla; alto: ~40% del ancho en celular, tope 280px en compu */
+.portada { margin-inline: -16px; position: relative; height: clamp(140px, 38vw, 280px);
+  overflow: hidden; background: var(--rosa); }
+.portada img, .portada svg, .portada video { width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(1) contrast(1.1); mix-blend-mode: multiply; }
+.portada::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,101,85,.55), rgba(255,61,152,.35)); mix-blend-mode: screen; }
+/* borde de ondas */
+.portada::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 22px; z-index: 2;
+  background: radial-gradient(circle at 50% 100%, var(--blanco) 15px, transparent 16px) 0 0 / 40px 22px repeat-x; }
+
+.perfil { width: 76px; height: 72px; border-radius: 18px; margin: -46px auto 0; position: relative; z-index: 3;
+  border: 4px solid var(--blanco); background: var(--blanco); overflow: hidden;
+  box-shadow: 0 10px 24px rgba(21,18,63,.18); }
+.perfil img, .perfil svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.cabecera { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+h1 { margin: 4px 0 0; line-height: 0; }
+h1 img { width: min(210px, 56vw); height: auto; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.fecha { font-family: var(--display); font-weight: 800; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .01em;
+  background: var(--amarillo); color: var(--azul); padding: 3px 18px; border-radius: 99px; line-height: 1.2; }
+.bajada { margin: 2px 0 0; font-family: var(--ancha); font-weight: 900; font-stretch: 125%; text-transform: uppercase;
+  font-size: .95rem; line-height: 1.2; max-width: 30ch; text-wrap: balance; }
+.pilares { font-size: .92rem; color: var(--azul-suave); }
+.cuenta { font-size: .8rem; color: var(--azul-suave); font-variant-numeric: tabular-nums; }
+.cuenta b { color: var(--rosa-fuerte); }
+.fila-social { display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap; margin: 2px 0 4px; }
+
+/* Iconos de redes */
+.redes { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.redes a { height: 44px; padding: 0 14px; display: flex; align-items: center; gap: 6px; border-radius: 99px;
+  color: var(--azul); border: 2px solid var(--azul); text-decoration: none; font-family: var(--display);
+  font-weight: 800; font-size: 1.15rem; transition: background .15s, color .15s; }
+.redes a:hover { background: var(--azul); color: var(--blanco); }
+.ico { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* Botones */
+.boton { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 64px;
+  padding: 12px 16px; border-radius: 16px; text-decoration: none; color: var(--azul);
+  background: var(--gris); border: 1.5px solid var(--linea); font: inherit; text-align: left;
+  cursor: pointer; transition: transform .15s, border-color .15s, box-shadow .15s; }
+.boton:hover { transform: translateY(-2px); border-color: var(--azul); box-shadow: 0 6px 16px rgba(21,18,63,.08); }
+.boton:focus-visible, .redes a:focus-visible, .disc a:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 3px; }
+.boton .txt { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.boton .titulo { font-weight: 700; font-size: 1.02rem; }
+.boton .sub { font-size: .82rem; color: var(--azul-suave); }
+.boton .flecha { width: 18px; height: 18px; opacity: .6; }
+.chip { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; flex: none;
+  background: var(--blanco); color: var(--azul); }
+
+/* Entradas: el degradé de las palmeras */
+.boton.principal { background: linear-gradient(100deg, var(--coral-fuerte), var(--rosa-fuerte)); border-color: transparent; color: var(--blanco); }
+
+.boton.principal .sub { color: var(--blanco); font-weight: 500; }
+.boton.principal .chip { background: rgba(255,255,255,.2); color: var(--blanco); }
+.boton.principal .flecha { opacity: .9; }
+.boton.principal:hover { border-color: transparent; box-shadow: none; }
+.nota { font-size: .8rem; color: var(--azul-suave); text-align: center; margin: -4px 0 4px; }
+
+/* Etapas de venta */
+.etapas { list-style: none; margin: 0; padding: 6px; display: grid; gap: 4px; border-radius: 16px; border: 1.5px solid var(--linea); }
+.etapa { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "n p" "n s"; align-items: center; column-gap: 12px;
+  padding: 10px 12px; border-radius: 11px; }
+.e-nombre { grid-area: n; font-family: var(--display); font-weight: 800; font-size: 1.25rem; text-transform: uppercase; line-height: 1.05; min-width: 0; }
+.e-nombre small { display: block; font-family: var(--texto); font-weight: 500; font-size: .75rem; text-transform: none; color: var(--azul-suave); margin-top: 2px; }
+.e-precio { grid-area: p; font-family: var(--display); font-weight: 800; font-size: 1.4rem; text-align: right; font-variant-numeric: tabular-nums; }
+.e-estado { grid-area: s; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-align: right; color: var(--azul-suave); }
+.etapa.agotada { opacity: .4; }
+.etapa.agotada .e-nombre, .etapa.agotada .e-precio { text-decoration: line-through; text-decoration-thickness: 2px; }
+.etapa.activa { background: linear-gradient(100deg, rgba(255,101,85,.12), rgba(255,61,152,.12)); box-shadow: inset 0 0 0 1.5px var(--rosa); }
+.etapa.activa .e-estado { color: var(--rosa-fuerte); }
+
+/* Entradas desplegable: mismo tamaño que los demás botones, con el degradé */
+.desplegable.entradas { border: 0; background: var(--blanco); box-shadow: 0 8px 22px rgba(212,44,122,.22); }
+.desplegable.entradas > .boton.principal { border-radius: 16px; background: linear-gradient(100deg, var(--coral-fuerte), var(--rosa-fuerte)); }
+.desplegable.entradas.abierto > .boton.principal { border-radius: 16px 16px 0 0; }
+.desplegable.entradas > .boton.principal:hover { background: linear-gradient(100deg, var(--coral-fuerte), var(--rosa-fuerte)); }
+.desplegable.entradas .panel { border: 1.5px solid var(--linea); border-top: 0; border-radius: 0 0 16px 16px; padding: 6px 12px 10px; display: grid; gap: 8px; }
+.desplegable.entradas .etapas { margin-top: 6px; }
+
+/* Puntos de venta (dentro del desplegable de entradas) */
+.ciudad { display: grid; grid-template-columns: 92px 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid var(--linea); }
+.puntos .ciudad:first-child { border-top: 0; }
+.ciudad a span { flex: 1; min-width: 0; }
+.ciudad .ir { width: 16px; height: 16px; color: var(--azul-suave); opacity: .7; }
+.ciudad h3 { margin: 6px 0 0; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--azul-suave); }
+.ciudad ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; min-width: 0; }
+.ciudad a, .ciudad .a-confirmar { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 8px; border-radius: 10px; color: var(--azul); text-decoration: none; font-weight: 600; font-size: .92rem; }
+.ciudad a:hover { background: var(--gris); }
+.ciudad a:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 2px; }
+.ciudad .ico { width: 18px; height: 18px; color: var(--rosa); }
+.ciudad small { display: block; font-weight: 400; font-size: .78rem; color: var(--azul-suave); }
+.ciudad .a-confirmar { color: var(--azul-suave); font-weight: 400; font-style: italic; }
+.ciudad .a-confirmar .ico { color: var(--azul-suave); }
+
+/* Vista previa de Instagram */
+.ig { display: flex; flex-direction: column; gap: 10px; }
+.ig-cabeza { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.ig h2 { margin: 0; font-size: 1.15rem; display: flex; align-items: center; gap: 8px; font-family: var(--display); font-weight: 800; line-height: 1; }
+.ig h2 .ico { width: 20px; height: 20px; color: var(--rosa); }
+.ig-cabeza a { font-size: .85rem; font-weight: 700; color: var(--rosa-fuerte); min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.ig-cabeza a:hover { text-decoration: underline; }
+.ig { margin-top: 6px; }
+.ig-grilla { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; }
+.ig-grilla a { display: block; aspect-ratio: 4 / 5; max-width: 100%; overflow: hidden; border-radius: 6px; background: var(--gris); }
+.ig-vacia { width: 100%; height: 100%; display: grid; place-items: center; color: var(--blanco);
+  background: linear-gradient(160deg, var(--coral), var(--rosa)); }
+.ig-vacia .ico { width: 40%; height: auto; max-width: 26px; }
+.ig-grilla img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform .25s; }
+.ig-grilla a:hover img { transform: scale(1.04); }
+.ig-grilla a:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 2px; }
+
+/* Desplegable de disciplinas */
+.desplegable { border-radius: 16px; background: var(--gris); border: 1.5px solid var(--linea); overflow: hidden; }
+.desplegable > .boton { background: transparent; border: 0; border-radius: 0; }
+.desplegable > .boton:hover { transform: none; box-shadow: none; }
+.desplegable .flecha { transition: transform .2s; }
+.desplegable.abierto .flecha { transform: rotate(180deg); }
+.disciplinas { list-style: none; margin: 0; padding: 0 12px 14px; display: grid; gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.disc:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.disc a { display: flex; flex-direction: column; gap: 3px; padding: 12px 14px; border-radius: 12px;
+  background: var(--blanco); border: 1.5px solid var(--linea); color: var(--azul); text-decoration: none; height: 100%;
+  transition: border-color .15s; }
+.disc a:hover { border-color: var(--rosa); }
+.disc .nombre { font-family: var(--ancha); font-weight: 900; font-stretch: 125%; font-size: 1rem; text-transform: uppercase; letter-spacing: .01em; line-height: 1.1; }
+.disc .contacto { font-size: .8rem; color: var(--rosa-fuerte); font-weight: 600; display: flex; align-items: center; gap: 5px; }
+.disc .contacto .ico { width: 14px; height: 14px; }
+.disc .pronto { display: flex; flex-direction: column; gap: 3px; padding: 12px 14px; border-radius: 12px;
+  border: 1.5px dashed var(--linea); height: 100%; color: var(--azul-suave); }
+.disc .pronto .contacto { color: var(--azul-suave); font-weight: 500; }
+
+/* Mapa */
+.mapa { border-radius: 16px; overflow: hidden; border: 1.5px solid var(--linea); background: var(--gris); }
+.mapa iframe { display: block; width: 100%; height: 170px; border: 0; }
+.mapa .boton { border: 0; border-radius: 0; background: transparent; }
+.mapa .boton:hover { transform: none; box-shadow: none; }
+
+.falta { display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 99px; font-size: .68rem; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; border: 1px dashed currentColor; color: #b7791f; vertical-align: middle; }
+.principal .falta { color: var(--blanco); }
+
+/* Pie: la banda azul de los flyers */
+footer { margin: 18px -16px 0; padding: 26px 16px calc(28px + env(safe-area-inset-bottom, 0px)); background: var(--azul); color: var(--blanco);
+  text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: .8rem; }
+@media (min-width: 552px) { footer { margin-inline: 0; border-radius: 6px 6px 0 0; } }
+footer .hashtag { font-family: var(--display); font-weight: 800; font-size: 1.05rem; letter-spacing: .02em;
+  border: 2px solid var(--blanco); border-radius: 99px; padding: 4px 16px; max-width: 100%; overflow-wrap: anywhere; }
+footer #pie { opacity: .8; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="fondo" id="fondo"></div>
+
+<div class="portada" id="portada"></div>
+<main>
+  <div class="perfil" id="perfil"></div>
+
+  <header class="cabecera">
+    <h1><img src="img/logo-azul.svg" alt=""><span class="oculto">Fan Fest 2026</span></h1>
+    <div class="fecha" id="fecha"></div>
+    <p class="bajada" id="bajada"></p>
+    <div class="pilares" id="pilares"></div>
+  </header>
+
+  <div class="fila-social">
+    <nav class="redes" id="redes" aria-label="Redes sociales"></nav>
+    <div class="cuenta" id="cuenta"></div>
+  </div>
+
+  <div id="botones" style="display:flex;flex-direction:column;gap:12px"></div>
+
+  <footer>
+    <div class="hashtag" id="hashtag"></div>
+    <div id="pie"></div>
+  </footer>
+</main>
+
+<script>
+/* ==========================================================================
+   CONFIGURACIÓN — todo lo editable está acá. Cambiá textos y links entre comillas.
+   Si un link todavía no está, dejalo con XXX y la página muestra "Falta link".
+   ========================================================================== */
+const FANFEST = {
+  imagenes: {
+    video:   "img/portada.mp4",   // video de portada (drone). Vacío = usa la foto
+    portada: "img/portada.jpg",   // foto de portada; también se ve mientras carga el video
+    perfil:  "img/perfil.svg",    // logo cuadrado de las palmeras
+    fondo:   ""                   // foto desenfocada de fondo (vacío = fondo blanco)
+  },
+  fecha: "Sáb 5 y Dom 6 de diciembre",
+  inicio: "2026-12-05T14:00:00-03:00",     // para la cuenta regresiva
+  bajada: "1 entrada · 2 días",
+  pilares: "deportes · pileta · música · amigos · fiesta",
+  hashtag: "#HAYATARDECERESYATARDECERES",
+  pie: "Círculo Italiano · Colón, Buenos Aires · El verano empieza acá.",
+
+  // Instagram es la única red oficial. Para sumar otra: { red: "tiktok", url: "..." }
+  redes: [
+    { red: "instagram", url: "https://instagram.com/fanfestx", texto: "fanfestx" }
+  ],
+
+  /* ENTRADAS POR ETAPAS
+     Para pasar de etapa cambiá solo "etapaActual". Las anteriores se muestran agotadas
+     (tachadas y más tenues), la actual destacada y las siguientes como "próximamente".
+     Precios: dejalos vacíos ("") hasta el lanzamiento. Todo lo que esté escrito acá
+     se puede ver en el código de la página publicada, aunque no aparezca en pantalla. */
+  entradas: {
+    etapaActual: "earlybird",       // earlybird · preventa1 · preventa2 · preventa3
+    mostrarPrecios: false,          // true = muestra la tabla con todas las etapas y sus precios
+    etapas: [
+      { id: "earlybird", nombre: "Early Bird",       precio: "$20.000", nota: "Primeras 200 entradas · cupos limitados", online: true },
+      { id: "preventa1", nombre: "Primera preventa", precio: "",        nota: "", online: true },
+      { id: "preventa2", nombre: "Segunda preventa", precio: "",        nota: "", online: true },
+      { id: "preventa3", nombre: "Tercera preventa", precio: "",        nota: "Precio final en puerta", online: true }
+    ],
+    online: { nombre: "WQRL Pass", url: "https://app.wqrldpass.com/evento/QjN5U3JrYVBkekRNK3lxTWR1ODRNMktWM3NtcVg0R0tkSDhMeG1ZRjVwST0" },
+    // Puntos de venta presenciales. "desde" = etapa en la que aparece. Sin url = "a confirmar".
+    puntos: [
+      { ciudad: "Colón",       nombre: "@corashee.ind",   detalle: "Calle 15 y Bv. 50", url: "https://www.instagram.com/corashee.ind/", desde: "earlybird" },
+      { ciudad: "Colón",       nombre: "@romimontardit",  detalle: "", url: "https://www.instagram.com/romimontardit/", desde: "preventa1" },
+      { ciudad: "Colón",       nombre: "@borracheria",    detalle: "", url: "https://www.instagram.com/borracheria/",    desde: "preventa1" },
+      { ciudad: "Ferré",       nombre: "@segatmili",      detalle: "", url: "https://www.instagram.com/segatmili/",      desde: "preventa1" },
+      { ciudad: "Pergamino",   nombre: "@romimontardit",  detalle: "", url: "https://www.instagram.com/romimontardit/", desde: "preventa1" },
+      { ciudad: "Wheelwright", nombre: "",                detalle: "", url: "", desde: "preventa1" },
+      { ciudad: "Hughes",      nombre: "",                detalle: "", url: "", desde: "preventa1" }
+    ]
+  },
+
+  socialRun: {
+    titulo: "Inscripciones Social Run × Trezor",
+    sub: "4K · $25.000 · Incluye Fan Fest · inscribite por WhatsApp",
+    url: "https://wa.me/5492473519686?text=Hola%2C%20me%20comunico%20por%20la%20inscripci%C3%B3n%20a%20los%204k%20de%20la%20Social%20Run"
+  },
+
+  disciplinas: {
+    titulo: "Inscripciones a otras disciplinas",
+    sub: "Elegí tu deporte y escribile al responsable",
+    lista: [
+      // contacto: solo el nombre (sin apellido) · whatsapp: solo números, 549 + característica + número
+      // whatsapp vacío = se muestra "Próximamente"
+      { nombre: "Rugby",   contacto: "Nico",    whatsapp: "5492473445829" },
+      { nombre: "Vóley",   contacto: "Ana",     whatsapp: "5492473469029" },
+      { nombre: "Pádel",   contacto: "",        whatsapp: "" },
+      { nombre: "Básquet", contacto: "",        whatsapp: "" },
+      { nombre: "Tenis",   contacto: "Martín",  whatsapp: "5493413225941" },
+      { nombre: "Hockey",  contacto: "Vanina",  whatsapp: "5492473471099" }
+    ]
+  },
+
+  /* VISTA PREVIA DE INSTAGRAM: vos elegís qué publicaciones se ven y en qué orden.
+     imagen: captura de la publicación (vertical 4:5, ej. 1080x1350) guardada en img/ig/
+     url: link de la publicación (en Instagram: ··· > Copiar enlace). Sin url, lleva al perfil.
+     Se muestran en una sola fila al final de la página (ideal: 5). */
+  instagram: {
+    usuario: "fanfestx",
+    perfil: "https://instagram.com/fanfestx",
+    publicaciones: [
+      // imagen vacía = recuadro con el logo de Instagram
+      { imagen: "img/ig/1.jpg", url: "https://www.instagram.com/p/DeIXTtotH92/", alt: "Reel: la fiesta de noche desde arriba" },
+      { imagen: "img/ig/2.jpg", url: "https://www.instagram.com/p/DR-V4GlD2PN/?img_index=1", alt: "Escenario y luces de la fiesta" },
+      { imagen: "img/ig/3.jpg", url: "https://www.instagram.com/p/DQps0eejZ5p/?img_index=1", alt: "Público en las gradas" },
+      { imagen: "img/ig/4.jpg", url: "https://www.instagram.com/p/DQps0eejZ5p/?img_index=2", alt: "Partido de rugby" },
+      { imagen: "img/ig/5.jpg", url: "https://www.instagram.com/p/DR-V4GlD2PN/?img_index=4", alt: "Partido de vóley" }
+    ]
+  },
+
+  info: {
+    titulo: "+ Info",
+    sub: "Escribinos por Instagram",
+    url: "https://ig.me/m/fanfestx"
+  },
+
+  ubicacion: {
+    titulo: "Cómo llegar",
+    sub: "Círculo Italiano · Colón, Buenos Aires",
+    url: "https://www.google.com/maps/search/?api=1&query=C%C3%ADrculo+Italiano+Col%C3%B3n+Buenos+Aires",
+    // mapa embebido (no requiere clave). Reemplazalo por el de "Compartir > Insertar mapa" si querés el pin exacto.
+    embed: "https://www.google.com/maps?q=C%C3%ADrculo+Italiano+Col%C3%B3n+Buenos+Aires&output=embed",
+    mostrarMapa: true
+  }
+};
+/* ======================= fin de la configuración ======================= */
+
+const ICONOS = {
+  instagram: '<rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/>',
+  whatsapp:  '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9 10.5c.5 1.6 2 3.1 3.6 3.6l1.1-1.1 2 .8v1.5c-3.6.6-7.8-3.6-7.2-7.2h1.5l.8 2Z"/>',
+  tiktok:    '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/>',
+  mapa:      '<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+  entrada:   '<path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/>',
+  correr:    '<circle cx="13" cy="4" r="2"/><path d="m6 22 3-7 3 2v5"/><path d="M8 11l2-4 4 1 2 3h3"/><path d="m10 7-4 3"/>',
+  pelota:    '<circle cx="12" cy="12" r="10"/><path d="M4.9 4.9c3.5 3 5.5 9.6 3.9 15.6"/><path d="M19.1 19.1c-3.5-3-5.5-9.6-3.9-15.6"/>',
+  info:      '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>',
+  tienda:    '<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M10 20v-6h4v6"/>',
+  flecha:    '<path d="M7 7h10v10"/><path d="M7 17 17 7"/>',
+  abajo:     '<path d="m6 9 6 6 6-6"/>'
+};
+const NOMBRES_RED = { instagram: "Instagram", whatsapp: "WhatsApp", tiktok: "TikTok", mapa: "Ubicación en Google Maps" };
+
+const ico = (n, cls = "ico") => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONOS[n]}</svg>`;
+const falta = (v) => !v || /X{3}/.test(v);
+const marca = (v) => falta(v) ? '<span class="falta">Falta link</span>' : "";
+const wa = (num, msg) => `https://wa.me/${num}${msg ? "?text=" + encodeURIComponent(msg) : ""}`;
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* Estadísticas: cada clic se registra en Umami si está conectado (data-umami-event). */
+const evento = (nombre) => `data-umami-event="${esc(nombre)}"`;
+
+/* Imágenes con respaldo: si la foto no carga, queda la ilustración del atardecer. */
+const ATARDECER = `<svg viewBox="0 0 160 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs><linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a1f5c"/><stop offset=".55" stop-color="#d9496b"/><stop offset="1" stop-color="#ff9a4a"/></linearGradient>
+  <linearGradient id="agua" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2bb3b0"/><stop offset="1" stop-color="#16455e"/></linearGradient></defs>
+  <rect width="160" height="90" fill="url(#cielo)"/><circle cx="80" cy="58" r="20" fill="#ffd27a"/>
+  <rect y="58" width="160" height="32" fill="url(#agua)"/>
+  <g stroke="#bff3ee" stroke-width="1.2" stroke-linecap="round" opacity=".7"><path d="M60 64h40"/><path d="M66 70h28"/><path d="M72 76h16"/><path d="M20 68h18"/><path d="M122 72h20"/></g></svg>`;
+const LOGO = `<svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" fill="#ffffff"/>
+  <text x="50" y="47" text-anchor="middle" font-family="Archivo, Arial Black, sans-serif" font-weight="900" font-size="30" fill="#15123f">FAN</text>
+  <text x="50" y="74" text-anchor="middle" font-family="Archivo, Arial Black, sans-serif" font-weight="900" font-size="30" fill="#ff3d98">FEST</text></svg>`;
+
+function imagen(contenedor, src, respaldo, alt) {
+  const el = document.getElementById(contenedor);
+  el.innerHTML = respaldo;
+  if (!src) return;
+  const img = new Image();
+  img.alt = alt;
+  img.onload = () => { el.innerHTML = ""; el.appendChild(img); };
+  img.src = src;
+}
+
+function render() {
+  const F = FANFEST;
+  imagen("portada", F.imagenes.portada, ATARDECER, "Vista aérea del Círculo Italiano");
+  const ahorroDatos = navigator.connection && navigator.connection.saveData;
+  if (F.imagenes.video && !ahorroDatos && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const v = document.createElement("video");
+    Object.assign(v, { src: F.imagenes.video, poster: F.imagenes.portada, muted: true, loop: true, autoplay: true, playsInline: true });
+    ["muted", "playsinline", "autoplay", "loop"].forEach((a) => v.setAttribute(a, ""));
+    v.setAttribute("aria-hidden", "true");
+    v.addEventListener("canplay", () => { const el = document.getElementById("portada"); el.innerHTML = ""; el.appendChild(v); v.play().catch(() => {}); }, { once: true });
+    v.load();
+  }
+  imagen("perfil", F.imagenes.perfil, LOGO, "Fan Fest");
+  imagen("fondo", F.imagenes.fondo, "", "");
+
+  document.getElementById("fecha").textContent = F.fecha;
+  document.getElementById("bajada").textContent = F.bajada;
+  document.getElementById("pilares").textContent = F.pilares;
+  document.getElementById("hashtag").textContent = F.hashtag;
+  document.getElementById("pie").textContent = F.pie;
+
+  const dias = Math.ceil((new Date(F.inicio) - new Date()) / 86400000);
+  document.getElementById("cuenta").innerHTML =
+    dias > 1 ? `Faltan <b>${dias} días</b>` : dias === 1 ? "<b>¡Es mañana!</b>" : dias > -2 ? "<b>¡Es hoy!</b>" : "";
+
+  document.getElementById("redes").innerHTML = F.redes.filter((r) => r.url).map((r) =>
+    `<a href="${esc(r.url)}" target="_blank" rel="noopener" aria-label="${NOMBRES_RED[r.red]}" title="${NOMBRES_RED[r.red]}${falta(r.url) ? " (falta link)" : ""}" ${evento("Red: " + r.red)}>${ico(r.red)}${r.texto ? esc(r.texto) : ""}</a>`
+  ).join("");
+
+  const boton = ({ url, icono, titulo, sub, clase = "", ev }) =>
+    `<a class="boton ${clase}" href="${esc(url)}" target="_blank" rel="noopener" ${evento(ev)}>
+      <span class="chip">${ico(icono)}</span>
+      <span class="txt"><span class="titulo">${esc(titulo)}${marca(url)}</span><span class="sub">${esc(sub)}</span></span>
+      ${ico("flecha", "ico flecha")}</a>`;
+
+  let html = "";
+  const E = F.entradas;
+  const iActual = Math.max(0, E.etapas.findIndex((e) => e.id === E.etapaActual));
+  const actual = E.etapas[iActual];
+  const posicion = (id) => E.etapas.findIndex((e) => e.id === id);
+  const puntos = E.puntos.filter((p) => posicion(p.desde) <= iActual);
+  const fisicos = puntos.filter((p) => p.url);
+
+  // Entradas: botón desplegable con las etapas (si mostrarPrecios) y dónde comprar
+  const ventas = [];
+  if (actual.online) ventas.push({ ciudad: "Online", nombre: E.online.nombre, detalle: "Comprá desde la app", url: E.online.url });
+  ventas.push(...puntos);
+  const ciudades = [...new Set(ventas.map((p) => p.ciudad))];
+  const modos = [actual.online && "Online", fisicos.length && "presencial"].filter(Boolean).join(" o ");
+  let tablaEtapas = "";
+  if (E.mostrarPrecios) {
+    tablaEtapas = `<ol class="etapas" aria-label="Etapas de venta">${E.etapas.map((e, i) => {
+      const estado = i < iActual ? "agotada" : i === iActual ? "activa" : "proxima";
+      const etiqueta = { agotada: "Agotada", activa: "A la venta", proxima: "Próximamente" }[estado];
+      return `<li class="etapa ${estado}"><span class="e-nombre">${esc(e.nombre)}${e.nota && estado !== "agotada" ? `<small>${esc(e.nota)}</small>` : ""}</span>
+        <span class="e-precio">${esc(e.precio || "—")}</span><span class="e-estado">${etiqueta}</span></li>`;
+    }).join("")}</ol>`;
+  }
+  html += `<div class="desplegable entradas" data-desplegable>
+    <button class="boton principal" type="button" aria-expanded="false" aria-controls="lista-entradas" ${evento("Abrir entradas")}>
+      <span class="chip">${ico("entrada")}</span>
+      <span class="txt"><span class="titulo">Entradas · ${esc(actual.nombre)}${/^\$/.test(actual.precio) ? " " + esc(actual.precio) : ""}</span>
+        <span class="sub">${esc([modos ? modos.charAt(0).toUpperCase() + modos.slice(1) : "", actual.nota].filter(Boolean).join(" · "))}</span></span>
+      ${ico("abajo", "ico flecha")}</button>
+    <div class="panel" id="lista-entradas" hidden>
+      ${tablaEtapas}
+      <div class="puntos">${ciudades.map((c) => `<div class="ciudad"><h3>${esc(c)}</h3><ul>${ventas.filter((p) => p.ciudad === c).map((p) => p.url
+        ? `<li><a href="${esc(p.url)}" target="_blank" rel="noopener" ${evento((c === "Online" ? "Entradas online " : "Punto de venta " + c + " ") + p.nombre)}>${ico(c === "Online" ? "entrada" : "tienda")}<span>${esc(p.nombre)}${p.detalle ? `<small>${esc(p.detalle)}</small>` : ""}</span>${ico("flecha", "ico ir")}</a></li>`
+        : `<li class="a-confirmar">${ico("tienda")}<span>Punto de venta a confirmar</span></li>`).join("")}</ul></div>`).join("")}</div>
+    </div></div>`;
+
+  html += boton({ url: F.socialRun.url,
+    icono: "correr", titulo: F.socialRun.titulo, sub: F.socialRun.sub, ev: "Inscripción Social Run" });
+
+  html += `<div class="desplegable" id="desplegable" data-desplegable>
+    <button class="boton" type="button" id="abrir-disciplinas" aria-expanded="false" aria-controls="lista-disciplinas" ${evento("Abrir disciplinas")}>
+      <span class="chip">${ico("pelota")}</span>
+      <span class="txt"><span class="titulo">${esc(F.disciplinas.titulo)}</span><span class="sub">${esc(F.disciplinas.sub)}</span></span>
+      ${ico("abajo", "ico flecha")}</button>
+    <ul class="disciplinas" id="lista-disciplinas" hidden>
+      ${F.disciplinas.lista.map((d) => d.whatsapp
+        ? `<li class="disc"><a href="${esc(wa(d.whatsapp, `Hola${d.contacto ? " " + d.contacto : ""}! Quiero inscribirme a ${d.nombre} en Fan Fest 2026`))}" target="_blank" rel="noopener" ${evento("Inscripción " + d.nombre)}>
+            <span class="nombre">${esc(d.nombre)}</span>
+            <span class="contacto">${ico("whatsapp")}${d.contacto ? "Escribile a " + esc(d.contacto) : "Inscribirme"}</span></a></li>`
+        : `<li class="disc"><div class="pronto"><span class="nombre">${esc(d.nombre)}</span><span class="contacto">Inscripciones próximamente</span></div></li>`).join("")}
+    </ul></div>`;
+
+  html += boton({ url: F.info.url, icono: "info", titulo: F.info.titulo, sub: F.info.sub, ev: "Más info Instagram" });
+
+  html += `<div class="mapa">
+    ${F.ubicacion.mostrarMapa && F.ubicacion.embed ? `<iframe src="${esc(F.ubicacion.embed)}" loading="lazy" title="Mapa del Círculo Italiano, Colón" referrerpolicy="no-referrer-when-downgrade"></iframe>` : ""}
+    ${boton({ url: F.ubicacion.url, icono: "mapa", titulo: F.ubicacion.titulo, sub: F.ubicacion.sub, ev: "Ubicación Google Maps" })}</div>`;
+
+  const IG = F.instagram;
+  if (IG && IG.publicaciones.length) {
+    html += `<section class="ig" aria-labelledby="titulo-ig">
+      <div class="ig-cabeza"><h2 id="titulo-ig">${ico("instagram")}@${esc(IG.usuario)}</h2>
+        <a href="${esc(IG.perfil)}" target="_blank" rel="noopener" ${evento("Instagram: ver perfil")}>Ver perfil</a></div>
+      <ul class="ig-grilla">${IG.publicaciones.map((pub, i) => `<li><a href="${esc(pub.url || IG.perfil)}" target="_blank" rel="noopener" ${evento("Instagram: publicación " + (i + 1))}>
+        ${pub.imagen ? `<img src="${esc(pub.imagen)}" alt="${esc(pub.alt || "Publicación de Fan Fest")}" loading="lazy">` : `<span class="ig-vacia" aria-label="Publicación ${i + 1} de Fan Fest">${ico("instagram")}</span>`}</a></li>`).join("")}</ul>
+    </section>`;
+  }
+
+  document.getElementById("botones").innerHTML = html;
+
+  document.querySelectorAll("[data-desplegable]").forEach((caja) => {
+    const btn = caja.querySelector("button");
+    const panel = document.getElementById(btn.getAttribute("aria-controls"));
+    btn.addEventListener("click", () => {
+      panel.hidden = !panel.hidden;
+      caja.classList.toggle("abierto", !panel.hidden);
+      btn.setAttribute("aria-expanded", String(!panel.hidden));
+    });
+  });
+  // Links directos con un desplegable abierto: tupagina/#disciplinas o tupagina/#entradas
+  const btn = document.getElementById("abrir-disciplinas");
+  if (location.hash === "#disciplinas") btn.click();
+  if (location.hash === "#entradas") document.querySelector(".entradas button").click();
+}
+render();
+</script>
+</body>
+</html>
