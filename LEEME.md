@@ -12,7 +12,7 @@ Reemplazo propio de Linktree: sin publicidad, sin límite de botones, con fotos,
 - Cambiar un link o texto: editá el valor entre comillas en CONFIGURACIÓN.
 - WhatsApp: solo números con código de país, ej. `5492473123456` (sin +, sin 0, sin 15).
 - Todo valor con `XXX` muestra un aviso amarillo "Falta link" en la página, para que nada salga incompleto.
-- Agregar una disciplina: copiá una línea de `lista` y cambiá nombre, contacto (solo nombre) y número. Si `whatsapp` queda vacío, se muestra "Inscripciones próximamente" (así están Pádel y Básquet).
+- Agregar una disciplina: copiá una línea de `lista` y cambiá nombre, contacto (solo nombre) y número. Si `whatsapp` queda vacío, se muestra "Inscripciones próximamente" (así está Básquet).
 - Redes: hoy solo Instagram (la única oficial). Se puede sumar una línea en `redes` (whatsapp, tiktok, mapa).
 - Vista previa de Instagram: en `instagram.publicaciones` elegís qué posteos se ven y en qué orden. Para cada uno, guardá una captura vertical (4:5) en `img/ig/` y pegá el link del posteo (en Instagram: ··· > Copiar enlace). Si un posteo no tiene link, la imagen lleva al perfil, y si no tiene imagen se muestra un recuadro con el logo de Instagram. Se ven en una sola fila al final de la página (ideal: 5).
 - Links directos con un desplegable abierto: `tupagina/#entradas` o `tupagina/#disciplinas` (sirve para historias del Social Run o flyers por deporte).
