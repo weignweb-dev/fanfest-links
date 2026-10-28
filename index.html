@@ -277,8 +277,9 @@ const FANFEST = {
   entradas: {
     etapaActual: "earlybird",       // earlybird · preventa1 · preventa2 · preventa3
     mostrarPrecios: false,          // true = muestra la tabla con todas las etapas y sus precios
+    // aviso: texto opcional que se suma al botón entre paréntesis, ej. "ÚLTIMOS" (vacío = no se muestra)
     etapas: [
-      { id: "earlybird", nombre: "Early Bird",       precio: "$20.000", nota: "Primeras 200 entradas · cupos limitados", online: true },
+      { id: "earlybird", nombre: "Early Bird",       precio: "$20.000", aviso: "ÚLTIMOS", nota: "Primeras 200 entradas · cupos limitados", online: true },
       { id: "preventa1", nombre: "Primera preventa", precio: "",        nota: "", online: true },
       { id: "preventa2", nombre: "Segunda preventa", precio: "",        nota: "", online: true },
       { id: "preventa3", nombre: "Tercera preventa", precio: "",        nota: "Precio final en puerta", online: true }
@@ -310,10 +311,11 @@ const FANFEST = {
       // whatsapp vacío = se muestra "Próximamente"
       { nombre: "Rugby",   contacto: "Nico",    whatsapp: "5492473445829" },
       { nombre: "Vóley",   contacto: "Ana",     whatsapp: "5492473469029" },
-      { nombre: "Pádel",   contacto: "",        whatsapp: "" },
+      { nombre: "Pádel",   contacto: "Seba",    whatsapp: "5492473403490" },
       { nombre: "Básquet", contacto: "",        whatsapp: "" },
       { nombre: "Tenis",   contacto: "Martín",  whatsapp: "5493413225941" },
-      { nombre: "Hockey",  contacto: "Vanina",  whatsapp: "5492473471099" }
+      { nombre: "Hockey",  contacto: "Vanina",  whatsapp: "5492473471099" },
+      { nombre: "Natación", contacto: "Gabo",  whatsapp: "5492473454894" }
     ]
   },
 
@@ -457,7 +459,7 @@ function render() {
   html += `<div class="desplegable entradas" data-desplegable>
     <button class="boton principal" type="button" aria-expanded="false" aria-controls="lista-entradas" ${evento("Abrir entradas")}>
       <span class="chip">${ico("entrada")}</span>
-      <span class="txt"><span class="titulo">Entradas · ${esc(actual.nombre)}${/^\$/.test(actual.precio) ? " " + esc(actual.precio) : ""}</span>
+      <span class="txt"><span class="titulo">Entradas · ${esc(actual.nombre)}${/^\$/.test(actual.precio) ? ": " + esc(actual.precio) : ""}${actual.aviso ? " (" + esc(actual.aviso) + ")" : ""}</span>
         <span class="sub">${esc([modos ? modos.charAt(0).toUpperCase() + modos.slice(1) : "", actual.nota].filter(Boolean).join(" · "))}</span></span>
       ${ico("abajo", "ico flecha")}</button>
     <div class="panel" id="lista-entradas" hidden>
