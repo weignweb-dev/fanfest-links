@@ -159,6 +159,10 @@ h1 img { width: min(210px, 56vw); height: auto; }
 .ciudad small { display: block; font-weight: 400; font-size: .78rem; color: var(--azul-suave); }
 .ciudad .a-confirmar { color: var(--azul-suave); font-weight: 400; font-style: italic; }
 .ciudad .a-confirmar .ico { color: var(--azul-suave); }
+.ciudad .pausado { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 8px; border-radius: 10px; color: var(--azul); font-weight: 600; font-size: .92rem; filter: grayscale(1); opacity: .5; cursor: not-allowed; user-select: none; }
+.ciudad .pausado > span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.ciudad .pausado .ico { width: 18px; height: 18px; }
+.badge-prox { display: inline-block; margin-top: 3px; font-size: .62rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 3px 7px; border-radius: 999px; border: 1px solid currentColor; }
 
 /* Vista previa de Instagram */
 .ig { display: flex; flex-direction: column; gap: 10px; }
@@ -285,6 +289,9 @@ const FANFEST = {
       { id: "preventa3", nombre: "Tercera preventa", precio: "",        nota: "Precio final en puerta", online: true }
     ],
     online: { nombre: "WQRL Pass", url: "https://app.wqrldpass.com/evento/QjN5U3JrYVBkekRNK3lxTWR1ODRNMktWM3NtcVg0R0tkSDhMeG1ZRjVwST0" },
+    // presencialPausado: true = se muestran TODOS los puntos presenciales como "Próximamente", desactivados (sin clic).
+    // Para reactivar la venta presencial, poner false.
+    presencialPausado: true,
     // Puntos de venta presenciales. "desde" = etapa en la que aparece. Sin url = "a confirmar".
     puntos: [
       { ciudad: "Colón",       nombre: "@corashee.ind",   detalle: "Calle 15 y Bv. 50", url: "https://www.instagram.com/corashee.ind/", desde: "earlybird" },
@@ -438,8 +445,9 @@ function render() {
   const iActual = Math.max(0, E.etapas.findIndex((e) => e.id === E.etapaActual));
   const actual = E.etapas[iActual];
   const posicion = (id) => E.etapas.findIndex((e) => e.id === id);
-  const puntos = E.puntos.filter((p) => posicion(p.desde) <= iActual);
-  const fisicos = puntos.filter((p) => p.url);
+  const pausado = !!E.presencialPausado;
+  const puntos = pausado ? E.puntos : E.puntos.filter((p) => posicion(p.desde) <= iActual);
+  const fisicos = pausado ? [] : puntos.filter((p) => p.url);
 
   // Entradas: botón desplegable con las etapas (si mostrarPrecios) y dónde comprar
   const ventas = [];
@@ -464,7 +472,9 @@ function render() {
       ${ico("abajo", "ico flecha")}</button>
     <div class="panel" id="lista-entradas" hidden>
       ${tablaEtapas}
-      <div class="puntos">${ciudades.map((c) => `<div class="ciudad"><h3>${esc(c)}</h3><ul>${ventas.filter((p) => p.ciudad === c).map((p) => p.url
+      <div class="puntos">${ciudades.map((c) => `<div class="ciudad"><h3>${esc(c)}</h3><ul>${ventas.filter((p) => p.ciudad === c).map((p) => pausado && c !== "Online"
+        ? `<li class="pausado" aria-disabled="true">${ico("tienda")}<span>${esc(p.nombre || "Punto de venta")}${p.detalle ? `<small>${esc(p.detalle)}</small>` : ""}<span class="badge-prox">Próximamente</span></span></li>`
+        : p.url
         ? `<li><a href="${esc(p.url)}" target="_blank" rel="noopener" ${evento((c === "Online" ? "Entradas online " : "Punto de venta " + c + " ") + p.nombre)}>${ico(c === "Online" ? "entrada" : "tienda")}<span>${esc(p.nombre)}${p.detalle ? `<small>${esc(p.detalle)}</small>` : ""}</span>${ico("flecha", "ico ir")}</a></li>`
         : `<li class="a-confirmar">${ico("tienda")}<span>Punto de venta a confirmar</span></li>`).join("")}</ul></div>`).join("")}</div>
     </div></div>`;
