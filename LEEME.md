@@ -23,7 +23,7 @@ Reemplazo propio de Linktree: sin publicidad, sin límite de botones, con fotos,
 - `mostrarPrecios: true` muestra la tabla con todas las etapas: las anteriores aparecen tachadas y tenues, la actual destacada y las siguientes como "Próximamente".
 - Los precios de las preventas se cargan recién el día del lanzamiento. Todo lo que esté escrito en el archivo se puede ver en el código de la página publicada, aunque no aparezca en pantalla.
 - `presencialPausado: true` muestra todos los puntos presenciales con "Próximamente", grises y sin clic (solo queda activa la compra online). Para reactivar la venta presencial, poner `false`.
-- En `puntos`, `desde` indica en qué etapa aparece cada punto de venta. Si un punto tiene nombre pero no `url`, se muestra con "Próximamente", gris y sin clic (así están Ferré, M. H. Alfonso y Wheelwright hasta tener su WhatsApp). Para WhatsApp, la url es `https://wa.me/549...`.
+- En `puntos`, `desde` indica en qué etapa aparece cada punto de venta. Si un punto tiene nombre pero no `url`, se muestra con "Próximamente", gris y sin clic. Para WhatsApp, la url es `https://wa.me/549...`.
 
 ## Publicación (GitHub + Netlify)
 
