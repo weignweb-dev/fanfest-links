@@ -19,11 +19,11 @@ Reemplazo propio de Linktree: sin publicidad, sin límite de botones, con fotos,
 
 ## Entradas: etapas y puntos de venta
 
-- Para cambiar de etapa se edita solo `entradas.etapaActual`: `earlybird`, `preventa1`, `preventa2` o `preventa3`. El botón de entradas es un desplegable (como el de disciplinas). Al tocarlo muestra la compra online en WQRL Pass y los puntos presenciales agrupados por ciudad.
+- Para cambiar de etapa se edita solo `entradas.etapaActual`: `earlybird`, `preventa1`, `preventa2` o `preventa3`. El botón de entradas es un desplegable (como el de disciplinas). Al tocarlo muestra la compra online en WQRLD Pass y los puntos presenciales agrupados por ciudad.
 - `mostrarPrecios: true` muestra la tabla con todas las etapas: las anteriores aparecen tachadas y tenues, la actual destacada y las siguientes como "Próximamente".
 - Los precios de las preventas se cargan recién el día del lanzamiento. Todo lo que esté escrito en el archivo se puede ver en el código de la página publicada, aunque no aparezca en pantalla.
 - `presencialPausado: true` muestra todos los puntos presenciales con "Próximamente", grises y sin clic (solo queda activa la compra online). Para reactivar la venta presencial, poner `false`.
-- En `puntos`, `desde` indica en qué etapa aparece cada punto de venta. Si un punto no tiene `url`, se muestra como "Punto de venta a confirmar" (así están Wheelwright y Hughes).
+- En `puntos`, `desde` indica en qué etapa aparece cada punto de venta. Si un punto tiene nombre pero no `url`, se muestra con "Próximamente", gris y sin clic (así están Ferré, M. H. Alfonso y Wheelwright hasta tener su WhatsApp). Para WhatsApp, la url es `https://wa.me/549...`.
 
 ## Publicación (GitHub + Netlify)
 

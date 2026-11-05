@@ -279,28 +279,29 @@ const FANFEST = {
      Precios: dejalos vacíos ("") hasta el lanzamiento. Todo lo que esté escrito acá
      se puede ver en el código de la página publicada, aunque no aparezca en pantalla. */
   entradas: {
-    etapaActual: "earlybird",       // earlybird · preventa1 · preventa2 · preventa3
+    etapaActual: "preventa1",       // earlybird · preventa1 · preventa2 · preventa3
     mostrarPrecios: false,          // true = muestra la tabla con todas las etapas y sus precios
     // aviso: texto opcional que se suma al botón entre paréntesis, ej. "ÚLTIMOS" (vacío = no se muestra)
     etapas: [
       { id: "earlybird", nombre: "Early Bird",       precio: "$20.000", aviso: "ÚLTIMOS", nota: "Primeras 200 entradas · cupos limitados", online: true },
-      { id: "preventa1", nombre: "Primera preventa", precio: "",        nota: "", online: true },
+      { id: "preventa1", nombre: "PRIMERA PREVENTA", precio: "$25.000", nota: "", online: true },
       { id: "preventa2", nombre: "Segunda preventa", precio: "",        nota: "", online: true },
       { id: "preventa3", nombre: "Tercera preventa", precio: "",        nota: "Precio final en puerta", online: true }
     ],
-    online: { nombre: "WQRL Pass", url: "https://app.wqrldpass.com/evento/QjN5U3JrYVBkekRNK3lxTWR1ODRNMktWM3NtcVg0R0tkSDhMeG1ZRjVwST0" },
+    online: { nombre: "WQRLD Pass", url: "https://app.wqrldpass.com/evento/QjN5U3JrYVBkekRNK3lxTWR1ODRNMktWM3NtcVg0R0tkSDhMeG1ZRjVwST0" },
     // presencialPausado: true = se muestran TODOS los puntos presenciales como "Próximamente", desactivados (sin clic).
     // Para reactivar la venta presencial, poner false.
-    presencialPausado: true,
+    presencialPausado: false,
     // Puntos de venta presenciales. "desde" = etapa en la que aparece. Sin url = "a confirmar".
     puntos: [
-      { ciudad: "Colón",       nombre: "@corashee.ind",   detalle: "Calle 15 y Bv. 50", url: "https://www.instagram.com/corashee.ind/", desde: "earlybird" },
-      { ciudad: "Colón",       nombre: "@romimontardit",  detalle: "", url: "https://www.instagram.com/romimontardit/", desde: "preventa1" },
-      { ciudad: "Colón",       nombre: "@borracheria",    detalle: "", url: "https://www.instagram.com/borracheria/",    desde: "preventa1" },
-      { ciudad: "Ferré",       nombre: "@segatmili",      detalle: "", url: "https://www.instagram.com/segatmili/",      desde: "preventa1" },
-      { ciudad: "Pergamino",   nombre: "@romimontardit",  detalle: "", url: "https://www.instagram.com/romimontardit/", desde: "preventa1" },
-      { ciudad: "Wheelwright", nombre: "",                detalle: "", url: "", desde: "preventa1" },
-      { ciudad: "Hughes",      nombre: "",                detalle: "", url: "", desde: "preventa1" }
+      { ciudad: "Colón",       nombre: "Kiosko del Tary", detalle: "Calle 48 y 14", url: "https://www.instagram.com/kioscodeltary/",  desde: "preventa1" },
+      { ciudad: "Colón",       nombre: "Corashee",        detalle: "Calle 50 y 15", url: "https://www.instagram.com/corashee.ind/",   desde: "earlybird" },
+      { ciudad: "Colón",       nombre: "El Baco",         detalle: "Calle 16 y 50", url: "https://www.instagram.com/elbaco_bebidas/", desde: "preventa1" },
+      { ciudad: "Colón",       nombre: "Borrachería",     detalle: "Calle 47 y 18", url: "https://www.instagram.com/borracheria/",    desde: "preventa1" },
+      // Sin url = se muestra el nombre con "Próximamente", gris y sin clic. Para WhatsApp: url "https://wa.me/549..."
+      { ciudad: "Ferré",       nombre: "Mili Segat",      detalle: "", url: "", desde: "preventa1" },
+      { ciudad: "M. H. Alfonso", nombre: "Cami Marenzi",  detalle: "", url: "", desde: "preventa1" },
+      { ciudad: "Wheelwright", nombre: "Emma Favaro",     detalle: "", url: "", desde: "preventa1" }
     ]
   },
 
@@ -448,6 +449,7 @@ function render() {
   const pausado = !!E.presencialPausado;
   const puntos = pausado ? E.puntos : E.puntos.filter((p) => posicion(p.desde) <= iActual);
   const fisicos = pausado ? [] : puntos.filter((p) => p.url);
+  const sinLink = (p) => !p.url && p.nombre;
 
   // Entradas: botón desplegable con las etapas (si mostrarPrecios) y dónde comprar
   const ventas = [];
@@ -467,12 +469,12 @@ function render() {
   html += `<div class="desplegable entradas" data-desplegable>
     <button class="boton principal" type="button" aria-expanded="false" aria-controls="lista-entradas" ${evento("Abrir entradas")}>
       <span class="chip">${ico("entrada")}</span>
-      <span class="txt"><span class="titulo">Entradas · ${esc(actual.nombre)}${/^\$/.test(actual.precio) ? ": " + esc(actual.precio) : ""}${actual.aviso ? " (" + esc(actual.aviso) + ")" : ""}</span>
+      <span class="txt"><span class="titulo">Entradas ${esc(actual.nombre)}${/^\$/.test(actual.precio) ? ": " + esc(actual.precio) : ""}${actual.aviso ? " (" + esc(actual.aviso) + ")" : ""}</span>
         <span class="sub">${esc([modos ? modos.charAt(0).toUpperCase() + modos.slice(1) : "", actual.nota].filter(Boolean).join(" · "))}</span></span>
       ${ico("abajo", "ico flecha")}</button>
     <div class="panel" id="lista-entradas" hidden>
       ${tablaEtapas}
-      <div class="puntos">${ciudades.map((c) => `<div class="ciudad"><h3>${esc(c)}</h3><ul>${ventas.filter((p) => p.ciudad === c).map((p) => pausado && c !== "Online"
+      <div class="puntos">${ciudades.map((c) => `<div class="ciudad"><h3>${esc(c)}</h3><ul>${ventas.filter((p) => p.ciudad === c).map((p) => (pausado || sinLink(p)) && c !== "Online"
         ? `<li class="pausado" aria-disabled="true">${ico("tienda")}<span>${esc(p.nombre || "Punto de venta")}${p.detalle ? `<small>${esc(p.detalle)}</small>` : ""}<span class="badge-prox">Próximamente</span></span></li>`
         : p.url
         ? `<li><a href="${esc(p.url)}" target="_blank" rel="noopener" ${evento((c === "Online" ? "Entradas online " : "Punto de venta " + c + " ") + p.nombre)}>${ico(c === "Online" ? "entrada" : "tienda")}<span>${esc(p.nombre)}${p.detalle ? `<small>${esc(p.detalle)}</small>` : ""}</span>${ico("flecha", "ico ir")}</a></li>`
