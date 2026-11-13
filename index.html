@@ -237,9 +237,7 @@ footer #pie { opacity: .8; }
 a.foto-actual:focus-visible, .anios a:focus-visible { outline: 3px solid var(--amarillo); outline-offset: 3px; }
 .anios { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; }
 .anios li { grid-column: span 2; }
-.anios li:nth-child(-n+2) { grid-column: span 3; }
 .anios a { position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 92px; padding: 10px 12px; border-radius: 14px; overflow: hidden; isolation: isolate; color: #fff; text-decoration: none; transition: transform .15s; }
-.anios li:nth-child(-n+2) a { height: 108px; }
 .anios a:hover { transform: translateY(-2px); }
 .anios img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; filter: grayscale(1); }
 .anios a::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(21,18,63,.35), rgba(21,18,63,.88)); }
@@ -366,7 +364,9 @@ const FANFEST = {
       { anio: "2024", url: "https://fanfest.pixieset.com/fanfest2024/", imagen: "img/ig/1.jpg" },
       { anio: "2023", url: "https://fanfest.pixieset.com/fanfest2023/", imagen: "img/ig/5.jpg" },
       { anio: "2022", url: "https://fanfest.pixieset.com/fanfest2022/", imagen: "img/ig/2.jpg" },
-      { anio: "2021", url: "https://fanfest.pixieset.com/fanfest2021/", imagen: "img/ig/3.jpg" }
+      { anio: "2021", url: "https://fanfest.pixieset.com/fanfest2021/", imagen: "img/ig/3.jpg" },
+      // 2020 no hubo edición. El link de 2019 dice "2029" por un error en Pixieset; es 2019.
+      { anio: "2019", url: "https://fanfest.pixieset.com/fanfest2029/", imagen: "img/portada.jpg" }
     ]
   },
 
