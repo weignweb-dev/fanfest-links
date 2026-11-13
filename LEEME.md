@@ -15,6 +15,7 @@ Reemplazo propio de Linktree: sin publicidad, sin límite de botones, con fotos,
 - Agregar una disciplina: copiá una línea de `lista` y cambiá nombre, contacto (solo nombre) y número. Si `whatsapp` queda vacío, se muestra "Inscripciones próximamente".
 - Redes: hoy solo Instagram (la única oficial). Se puede sumar una línea en `redes` (whatsapp, tiktok, mapa).
 - Vista previa de Instagram: en `instagram.publicaciones` elegís qué posteos se ven y en qué orden. Para cada uno, guardá una captura vertical (4:5) en `img/ig/` y pegá el link del posteo (en Instagram: ··· > Copiar enlace). Si un posteo no tiene link, la imagen lleva al perfil, y si no tiene imagen se muestra un recuadro con el logo de Instagram. Se ven en una sola fila al final de la página (ideal: 5).
+- Fotos: en `fotos.actual` va el álbum de este año (sin `url` se ve "Próximamente" y no se puede tocar; cuando tengas el link, pegalo en `url`). En `fotos.anteriores` hay una tarjeta por año con su link, de la más nueva a la más vieja. Todas se ven iguales, sin importar si el álbum está en Pixieset o en Drive. Para cambiar un álbum de lugar, solo se cambia la `url`.
 - Links directos con un desplegable abierto: `tupagina/#entradas` o `tupagina/#disciplinas` (sirve para historias del Social Run o flyers por deporte).
 
 ## Entradas: etapas y puntos de venta
